@@ -164,7 +164,7 @@ MathJax = {
           
       </div>
       <div class="markdown-body">
-        <h1 id="Object-Creation"><a href="#Object-Creation" class="headerlink" title="Object Creation"></a>Object Creation</h1><p>In JavaScript, there are several ways to<br>create an object:</p>
+        <p>In JavaScript, there are several ways to create an object:</p>
 <ol>
 <li>Object literal: the prototype object of objects created in this way is <code>Object</code>;</li>
 <li>Factory function: the prototype object of objects created in this way may be <code>Object</code>, or may not be <code>Object</code> (it depends);</li>
@@ -174,7 +174,7 @@ MathJax = {
 <h2 id="Object-Literal"><a href="#Object-Literal" class="headerlink" title="Object Literal"></a>Object Literal</h2><p>First, let’s see an example:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> harry = &#123;</span><br><span class="line">    name: <span class="string">&quot;Harry Smith&quot;</span>,</span><br><span class="line">    salary: <span class="number">90000</span>,</span><br><span class="line">    raiseSalary: <span class="function"><span class="keyword">function</span> (<span class="params">percent</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.salary *= <span class="number">1</span> + percent / <span class="number">100</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>In the code above, <code>raiseSalary</code> is called function-valued property, which means <code>raiseSalary</code> is a property of the object <code>harry</code>. Another way of writing is as follows:</p>
+<p>In the code above, <code>raiseSalary</code> is called function-valued property, which means <code>raiseSalary</code> is a property of the object <code>harry</code>. Another way of writing the <code>raiseSalary</code> property is as follows:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> harry = &#123;</span><br><span class="line">    name: <span class="string">&quot;Harry Smith&quot;</span>,</span><br><span class="line">    salary: <span class="number">90000</span>,</span><br><span class="line">    <span class="function"><span class="title">raiseSalary</span>(<span class="params">percent</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.salary *= <span class="number">1</span> + percent / <span class="number">10</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       </div>
@@ -236,7 +236,7 @@ MathJax = {
   <div class="post-catalog hidden" id="catalog">
     <div class="title">Contents</div>
     <div class="catalog-content">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Object-Creation"><span class="toc-text">Object Creation</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Object-Literal"><span class="toc-text">Object Literal</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Object-Literal"><span class="toc-text">Object Literal</span></a></li></ol>
     </div>
   </div>
 
