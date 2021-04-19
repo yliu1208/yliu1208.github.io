@@ -6,7 +6,7 @@
 html, body {
   font-size: 10px;
   letter-spacing: 0.01rem;
-  font-family: Consolas, "Liberation Mono", Menlo, Monaco, "Source Han Sans CN", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif
+  font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif
 }
 
 body.hidden {
