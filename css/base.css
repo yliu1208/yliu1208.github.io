@@ -4,9 +4,9 @@
 }
 
 html, body {
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.01rem;
-  font-family: adobe-garamond-pro, Georgia, "Times New Roman", Times, serif;
+  font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
 }
 
 body.hidden {
