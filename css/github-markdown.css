@@ -8,8 +8,8 @@
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   line-height: normal;
-  color: #24292e;
-/*  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+  color: black;
+  /*  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";*/
   font-size: 1.6rem;
   line-height: normal;
@@ -440,7 +440,7 @@
   padding: 15px;
   color: #555;
   border-left: 0.25em solid #555;
-  background: #EEEEEE;
+  background: #eeeeee;
   border-radius: 3px;
 }
 
