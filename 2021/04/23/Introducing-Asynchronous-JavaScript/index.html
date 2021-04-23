@@ -11,7 +11,7 @@
   
   <title>
     
-      JavaScript30 - JavaScript Drum Kit 
+      Introducing Asynchronous JavaScript 
       
       
       |
@@ -127,29 +127,18 @@ MathJax = {
   <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
   <div class="container post-details" id="post-details">
     <div class="post-content">
-      <div class="post-title">JavaScript30 - JavaScript Drum Kit</div>
+      <div class="post-title">Introducing Asynchronous JavaScript</div>
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime" title="Update time"></i>
-          2021-04-19 09:03:33
+          2021-04-23 09:56:06
         </span>
         
               <span class="post-categories">
                 <i class="iconfont icon-bookmark" title="Categories"></i>
                 
                 <span class="span--category">
-                  <a href="/categories/JavaScript30/" title="JavaScript30">
-                    <b>#</b> JavaScript30
-                  </a>
-                </span>
-                
-              </span>
-          
-              <span class="post-tags">
-                <i class="iconfont icon-tags" title="Tags"></i>
-                
-                <span class="span--tag">
-                  <a href="/tags/JavaScript/" title="JavaScript">
+                  <a href="/categories/JavaScript/" title="JavaScript">
                     <b>#</b> JavaScript
                   </a>
                 </span>
@@ -158,17 +147,35 @@ MathJax = {
           
       </div>
       <div class="markdown-body">
-        <h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-key</span>=<span class="string">&quot;65&quot;</span> <span class="attr">class</span>=<span class="string">&quot;key&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">kbd</span>&gt;</span>A<span class="tag">&lt;/<span class="name">kbd</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;sound&quot;</span>&gt;</span>clap<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+        <h1 id="Introducing-Asynchronous-JavaScript"><a href="#Introducing-Asynchronous-JavaScript" class="headerlink" title="Introducing Asynchronous JavaScript"></a>Introducing Asynchronous JavaScript</h1><h2 id="Asynchronous-JavaScript"><a href="#Asynchronous-JavaScript" class="headerlink" title="Asynchronous JavaScript"></a>Asynchronous JavaScript</h2><blockquote>
+<p>There are two main types of asynchronous code style you’ll come across in JavaScript code, old-style callbacks and newer promise-style code.</p>
+</blockquote>
+<h3 id="Async-callbacks"><a href="#Async-callbacks" class="headerlink" title="Async callbacks"></a>Async callbacks</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">btn.addEventListener(<span class="string">&#x27;click&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    alert(<span class="string">&#x27;You clicked me!&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> pElem = <span class="built_in">document</span>.createElement(<span class="string">&#x27;p&#x27;</span>);</span><br><span class="line">    pElem.textContent = <span class="string">&#x27;This is a newly-added paragraph.&#x27;</span>;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(pElem);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">audio</span> <span class="attr">data-key</span>=<span class="string">&quot;65&quot;</span> <span class="attr">src</span>=<span class="string">&quot;sounds/clap.wav&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>The first parameter is the type of event to be listened for, and the second parameter is a callback function that is invoked when the event is <span style="color:red"><strong>fired</strong></span>.</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadAsset</span>(<span class="params">url, type, callback</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    xhr.open(<span class="string">&quot;GET&quot;</span>, url);</span><br><span class="line">    xhr.responseType = type;</span><br><span class="line"></span><br><span class="line">    xhr.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        callback(xhr.response);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    xhr.send();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">displayImage</span>(<span class="params">blob</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> objectURL = URL.createObjectURL(blob);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> image = <span class="built_in">document</span>.createElement(<span class="string">&quot;img&quot;</span>);</span><br><span class="line">    image.src = objectURL;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(image);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">loadAsset(<span class="string">&quot;coffee.jpg&quot;</span>, <span class="string">&quot;blob&quot;</span>, displayImage);</span><br></pre></td></tr></table></figure>
 
-<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2>
+<p>Note that not all callbacks are async - some run synchronously. An example is when we use <code>Array.prototype.forEach()</code> to loop through the items in an array:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> gods = [<span class="string">&quot;Apollo&quot;</span>, <span class="string">&quot;Artemis&quot;</span>, <span class="string">&quot;Ares&quot;</span>, <span class="string">&quot;Zeus&quot;</span>];</span><br><span class="line"></span><br><span class="line">gods.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">eachName, index</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(index + <span class="string">&quot;. &quot;</span> + eachName);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Promises"><a href="#Promises" class="headerlink" title="Promises"></a>Promises</h3><p>Promises are the new style of async code that you’ll see used in modern Web APIs. A good example is the <code>fetch()</code> API, which is basically like a modern, more efficient version of <code>XMLHttpRequest</code>. Let’s look at a quick example, from our Fetching data from the server article:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">&quot;products.json&quot;</span>)</span><br><span class="line">    .then(<span class="function"><span class="keyword">function</span> (<span class="params">response</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> response.json();</span><br><span class="line">    &#125;)</span><br><span class="line">    .then(<span class="function"><span class="keyword">function</span> (<span class="params">json</span>) </span>&#123;</span><br><span class="line">        products = json;</span><br><span class="line">        initialize();</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;Fetch problem: &quot;</span> + err.message);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Here we see <code>fetch()</code> taking a single parameter - the URL of a resource you want to fetch from the network - and <mark>returning a promise</mark>. <mark>The promise is an object</mark> representing the completion or failure of the async operation. <mark>It represents an intermediate state</mark>, as it were.</p>
+<p>We’ve then got three further code blocks chained onto the end of the fetch():</p>
+<ul>
+<li>Two <code>then()</code> blocks. Both contain a callback function that will run if the previous operation is successful, and each callback receives as input the result of the previous successful operation, so you can go forward and do something else to it. <mark>Each <code>.then()</code> block returns another promise</mark>, meaning that you can chain multiple <code>.then()</code> blocks onto each other, so multiple asynchronous operations can be made to run in order, one after another.</li>
+<li>The <code>catch()</code> block at the end runs if <mark>any of the <code>.then()</code> blocks fail</mark> — in a similar way to synchronous try…catch blocks, an error object is made available inside the <code>catch()</code>, which can be used to report the kind of error that has occurred. Note however that <strong>synchronous <code>try...catch</code> won’t work with promises, although it will work with async/await</strong>, as you’ll learn later on.</li>
+</ul>
+
       </div>
       
         <div class="prev-or-next">
           <div class="post-foot-next">
             
-              <a href="/2021/04/18/Object%20Creation%20&%20Prototype/" target="_self">
+              <a href="/2021/04/19/JavaScript30-JavaScript-Drum-Kit/" target="_self">
                 <i class="iconfont icon-chevronleft"></i>
                 <span>Prev</span>
               </a>
@@ -177,25 +184,14 @@ MathJax = {
           <div class="post-attach">
             <span class="post-pubtime">
               <i class="iconfont icon-updatetime" title="Update time"></i>
-              2021-04-19 09:03:33
+              2021-04-23 09:56:06
             </span>
             
                   <span class="post-categories">
                     <i class="iconfont icon-bookmark" title="Categories"></i>
                     
                     <span class="span--category">
-                      <a href="/categories/JavaScript30/" title="JavaScript30">
-                        <b>#</b> JavaScript30
-                      </a>
-                    </span>
-                    
-                  </span>
-              
-                  <span class="post-tags">
-                    <i class="iconfont icon-tags" title="Tags"></i>
-                    
-                    <span class="span--tag">
-                      <a href="/tags/JavaScript/" title="JavaScript">
+                      <a href="/categories/JavaScript/" title="JavaScript">
                         <b>#</b> JavaScript
                       </a>
                     </span>
@@ -204,11 +200,6 @@ MathJax = {
               
           </div>
           <div class="post-foot-prev">
-            
-              <a href="/2021/04/23/Introducing-Asynchronous-JavaScript/" target="_self">
-                <span>Next</span>
-                <i class="iconfont icon-chevronright"></i>
-              </a>
             
           </div>
         </div>
@@ -221,7 +212,7 @@ MathJax = {
   <div class="post-catalog hidden" id="catalog">
     <div class="title">Contents</div>
     <div class="catalog-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML"><span class="toc-text">HTML</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS"><span class="toc-text">CSS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript"><span class="toc-text">JavaScript</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Introducing-Asynchronous-JavaScript"><span class="toc-text">Introducing Asynchronous JavaScript</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Asynchronous-JavaScript"><span class="toc-text">Asynchronous JavaScript</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Async-callbacks"><span class="toc-text">Async callbacks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Promises"><span class="toc-text">Promises</span></a></li></ol></li></ol></li></ol>
     </div>
   </div>
 
