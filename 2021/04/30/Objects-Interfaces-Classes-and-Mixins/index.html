@@ -11,7 +11,7 @@
   
   <title>
     
-      Category 
+      Dart - Objects, Interfaces, Classes and Mixins 
       
       
       |
@@ -118,19 +118,124 @@ MathJax = {
 
 
   
-  <!-- 分类页 url形式：https://yoursite/categories/ -->
-  <div class="container category-index">
-    <div>
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript30/">JavaScript30</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dart/">Dart</a><span class="category-list-count">1</span></li></ul>
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">Dart - Objects, Interfaces, Classes and Mixins</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime" title="Update time"></i>
+          2021-04-30 22:06:03
+        </span>
+        
+              <span class="post-categories">
+                <i class="iconfont icon-bookmark" title="Categories"></i>
+                
+                <span class="span--category">
+                  <a href="/categories/Dart/" title="Dart">
+                    <b>#</b> Dart
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <h1 id="Objects-Interfaces-Classes-and-Mixins"><a href="#Objects-Interfaces-Classes-and-Mixins" class="headerlink" title="Objects, Interfaces, Classes and Mixins"></a>Objects, Interfaces, Classes and Mixins</h1><h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h3><ul>
+<li>An object consists of a (possibly empty) set of fields, providing state, and a set of methods, providing behavior.</li>
+<li>Every object has a class; we say that the object is an instance of a class.</li>
+<li>In Dart, <code>null</code> is an object, much like any other. One must not confuse <code>null</code> with other objects such as <code>0</code> or <code>false</code>.</li>
+</ul>
+<h3 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h3><ul>
+<li>Every class has a single superclass, except for the class <code>Object</code> which is built in to every Dart implementation.</li>
+<li>If a class does not list a superclass, the superclass is <code>Object</code>.</li>
+<li>A class may implement a number of interfaces by declaring them in its implement clause.</li>
+</ul>
+<h2 id="Class-and-Superclass"><a href="#Class-and-Superclass" class="headerlink" title="Class and Superclass"></a>Class and Superclass</h2><h3 id="Method-Overriding"><a href="#Method-Overriding" class="headerlink" title="Method Overriding"></a>Method Overriding</h3><p>Rules:</p>
+<ul>
+<li>A method declared <code>final</code> cannot be overridden.</li>
+<li>A method declared <code>static</code> cannot be overridden.</li>
+<li>If a method cannot be inherited then it cannot be overridden.</li>
+<li>Constructors cannot be overridden.</li>
+</ul>
+<h2 id="Interfaces"><a href="#Interfaces" class="headerlink" title="Interfaces"></a>Interfaces</h2><p>Dart does not have formal interface declarations like those found in many other languages. There are unnecessary, as <strong>one can always define an abstract class to describe a desired interface</strong>.</p>
+<h3 id="Interface-amp-Superinterfaces"><a href="#Interface-amp-Superinterfaces" class="headerlink" title="Interface &amp; Superinterfaces"></a>Interface &amp; Superinterfaces</h3><p>To be explored …</p>
+<h2 id="Constant-Objects-and-Fields"><a href="#Constant-Objects-and-Fields" class="headerlink" title="Constant Objects and Fields"></a>Constant Objects and Fields</h2><p>Constant objects get created using <code>const</code> instead of <code>new</code>. Like a <code>new</code> expression, a <code>const</code> expression invokes a constructor, but that constructor must be a <strong>constant constructor</strong>, and the arguments to the constructor must themselves be constant.</p>
+<p>Use const constructors if you want to create objects that never change and are treated as compile time constants.</p>
+<p><strong>A class can have constant constructor only if all of its members are final</strong>.</p>
+<p>Example:</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Color</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="built_in">int</span> red;</span><br><span class="line">    <span class="keyword">final</span> <span class="built_in">int</span> green;</span><br><span class="line">    <span class="keyword">final</span> <span class="built_in">int</span> blue;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> Color(<span class="keyword">this</span>.red, <span class="keyword">this</span>.green, <span class="keyword">this</span>.blue);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main(<span class="built_in">List</span>&lt;<span class="built_in">String</span>&gt; args) &#123;</span><br><span class="line">    <span class="keyword">var</span> colorA = <span class="keyword">const</span> Color(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line">    <span class="comment">// const keyword is optional</span></span><br><span class="line">    <span class="keyword">var</span> colorB = Color(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">        colorA.red: <span class="subst">$&#123;colorA.red&#125;</span></span></span><br><span class="line"><span class="string">        colorA.green: <span class="subst">$&#123;colorA.green&#125;</span></span></span><br><span class="line"><span class="string">        colorA.blue: <span class="subst">$&#123;colorA.blue&#125;</span></span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">        colorB.red: <span class="subst">$&#123;colorB.red&#125;</span></span></span><br><span class="line"><span class="string">        colorB.green: <span class="subst">$&#123;colorB.green&#125;</span></span></span><br><span class="line"><span class="string">        colorB.blue: <span class="subst">$&#123;colorB.blue&#125;</span></span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2021/04/24/Collections-of-CSS-Basics/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2021-04-30 22:06:03
+            </span>
+            
+                  <span class="post-categories">
+                    <i class="iconfont icon-bookmark" title="Categories"></i>
+                    
+                    <span class="span--category">
+                      <a href="/categories/Dart/" title="Dart">
+                        <b>#</b> Dart
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Objects-Interfaces-Classes-and-Mixins"><span class="toc-text">Objects, Interfaces, Classes and Mixins</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Object"><span class="toc-text">Object</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Class"><span class="toc-text">Class</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Class-and-Superclass"><span class="toc-text">Class and Superclass</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Method-Overriding"><span class="toc-text">Method Overriding</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Interfaces"><span class="toc-text">Interfaces</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Interface-amp-Superinterfaces"><span class="toc-text">Interface &amp; Superinterfaces</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Constant-Objects-and-Fields"><span class="toc-text">Constant Objects and Fields</span></a></li></ol></li></ol>
     </div>
   </div>
-  
 
   
+<script src="/js/catalog.js"></script>
 
-  
 
-  
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+      </div>
+    
+  </div>
+
 
         <div class="footer">
   <div class="social">
