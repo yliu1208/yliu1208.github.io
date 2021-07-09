@@ -653,7 +653,7 @@
 
 .markdown-body code {
   padding: 3px 5px;
-  margin: 0 2px;
+  margin: 0 0;
   font-size: 85%;
   font-weight: 600;
   border-radius: 3px;
