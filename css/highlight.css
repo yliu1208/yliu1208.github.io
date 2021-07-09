@@ -2,7 +2,7 @@
 
 .markdown-body .highlight {
   color: #FFF5EE;
-  background-color: #DDDDDD;
+  background-color: #333333;
   border-radius: 5px;
 }
 
@@ -17,18 +17,14 @@
 
 .markdown-body .highlight .gutter pre {
   color: #999;
-  background: #DDDDDD;
+  background: #333333;
 } 
-
-.markdown-body .highlight .gutter .line {
-  color: black;
-}
 
 .highlight .code pre {
     width: 100%;
     padding-left: 10px;
     padding-right: 10px;
-    background-color: #DDDDDD !important;
+    background-color: #333333 !important;
 }
 
 .markdown-body .highlight table tbody pre {
