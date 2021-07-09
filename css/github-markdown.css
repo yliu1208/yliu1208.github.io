@@ -468,6 +468,7 @@
 .markdown-body h4,
 .markdown-body h5,
 .markdown-body h6 {
+  color: #4169E1;
   margin-top: 24px;
   margin-bottom: 16px;
   font-weight: 600;
@@ -746,7 +747,8 @@
 
 .markdown-body hr {
   border-bottom-color: #eee;
-}
+} 
+
 
 details summary {
   outline: none;
