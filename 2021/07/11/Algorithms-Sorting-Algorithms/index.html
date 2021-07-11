@@ -11,7 +11,7 @@
   
   <title>
     
-      Archives 
+      Algorithms - Sorting Algorithms 
       
       
       |
@@ -99,77 +99,131 @@
 
 
       <div class="flex-container">
-        <!-- 归档页，展示本站所有文章，按照年份降序归类，url形式：https://yoursite/archives/ -->
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
-<!-- last: 按年份把文章分组，当前遍历到的年份 -->
-<!-- now: 当前遍历到的文章的发布年份 -->
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
 
-<div class="container archives">
-  <div class="post-list">
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2021</span>
-          </h2>
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">Algorithms - Sorting Algorithms</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime" title="Update time"></i>
+          2021-07-11 10:02:17
+        </span>
+        
+              <span class="post-categories">
+                <i class="iconfont icon-bookmark" title="Categories"></i>
+                
+                <span class="span--category">
+                  <a href="/categories/Algorithms/" title="Algorithms">
+                    <b>#</b> Algorithms
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <h1 id="Sorting-Algorithms"><a href="#Sorting-Algorithms" class="headerlink" title="Sorting Algorithms"></a>Sorting Algorithms</h1><ul>
+<li>Bubble Sort</li>
+<li>Selection Sort</li>
+<li>Insertion Sort</li>
+<li>Shell Sort</li>
+<li>Merge Sort</li>
+<li>Quick Sort</li>
+<li>Heap Sort</li>
+</ul>
+<h2 id="Bubble-Sort"><a href="#Bubble-Sort" class="headerlink" title="Bubble Sort"></a>Bubble Sort</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BubbleSort</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] array, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> temp = array[i];</span><br><span class="line">		array[i] = array[j];</span><br><span class="line">		array[j] = temp;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span>[] array)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> last = array.length - <span class="number">1</span>; last &gt;= <span class="number">1</span>; last--) &#123;</span><br><span class="line">			<span class="keyword">int</span> swapNumber = <span class="number">0</span>;</span><br><span class="line">            <span class="comment">// i + 1 &lt;= last</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= last - <span class="number">1</span>; i++) &#123;</span><br><span class="line">				<span class="keyword">if</span>(array[i] &gt; array[i+<span class="number">1</span>]) &#123;</span><br><span class="line">					swap(array, i, i+<span class="number">1</span>);</span><br><span class="line">					swapNumber++;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(swapNumber == <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span>[] array = &#123;<span class="number">15</span>, <span class="number">12</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">32</span>, <span class="number">18</span>, <span class="number">24</span>, <span class="number">2</span>, <span class="number">89</span>&#125;;</span><br><span class="line">		System.out.println(<span class="string">&quot;Before bubble sort: \n&quot;</span> + Arrays.toString(array));</span><br><span class="line">		sort(array);</span><br><span class="line">		System.out.println(<span class="string">&quot;After bubble sort: \n&quot;</span> + Arrays.toString(array));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>To be continued …</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2021/07/10/Leetcode-3Sum/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2021-07-11 10:02:17
+            </span>
+            
+                  <span class="post-categories">
+                    <i class="iconfont icon-bookmark" title="Categories"></i>
+                    
+                    <span class="span--category">
+                      <a href="/categories/Algorithms/" title="Algorithms">
+                        <b>#</b> Algorithms
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
         </div>
       
-      <div class="post-item" title="Algorithms - Sorting Algorithms">
-        <div class="time-m-d">07-11</div>
-        <div class="title">
-          <a href="/2021/07/11/Algorithms-Sorting-Algorithms/">
-            <span>Algorithms - Sorting Algorithms</span>
-          </a>
-        </div>
-      </div>
+    </div>
     
-      <div class="post-item" title="Leetcode - 3Sum">
-        <div class="time-m-d">07-10</div>
-        <div class="title">
-          <a href="/2021/07/10/Leetcode-3Sum/">
-            <span>Leetcode - 3Sum</span>
-          </a>
-        </div>
-      </div>
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Sorting-Algorithms"><span class="toc-text">Sorting Algorithms</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Bubble-Sort"><span class="toc-text">Bubble Sort</span></a></li></ol></li></ol>
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
     
-      <div class="post-item" title="Dart - Objects, Interfaces, Classes and Mixins">
-        <div class="time-m-d">04-30</div>
-        <div class="title">
-          <a href="/2021/04/30/Objects-Interfaces-Classes-and-Mixins/">
-            <span>Dart - Objects, Interfaces, Classes and Mixins</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Introducing Asynchronous JavaScript">
-        <div class="time-m-d">04-23</div>
-        <div class="title">
-          <a href="/2021/04/23/Introducing-Asynchronous-JavaScript/">
-            <span>Introducing Asynchronous JavaScript</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Object Creation & Prototype">
-        <div class="time-m-d">04-18</div>
-        <div class="title">
-          <a href="/2021/04/18/Object%20Creation%20&%20Prototype/">
-            <span>Object Creation & Prototype</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Hello World">
-        <div class="time-m-d">04-18</div>
-        <div class="title">
-          <a href="/2021/04/18/hello-world/">
-            <span>Hello World</span>
-          </a>
-        </div>
+      <div class="comments-container">
+        
+
+
+
+
+
       </div>
     
   </div>
-</div>
+
 
         <div class="footer">
   <div class="social">
