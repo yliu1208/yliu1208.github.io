@@ -11,7 +11,7 @@
   
   <title>
     
-      Category 
+      Leetcode - 54. Spiral Matrix 
       
       
       |
@@ -114,19 +114,88 @@ MathJax = {
 
 
   
-  <!-- 分类页 url形式：https://yoursite/categories/ -->
-  <div class="container category-index">
-    <div>
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C-Programming/">C Programming</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Miscellaneous/">Miscellaneous</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dart/">Dart</a><span class="category-list-count">1</span></li></ul>
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">Leetcode - 54. Spiral Matrix</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime" title="Update time"></i>
+          2021-07-22 23:41:41
+        </span>
+        
+              <span class="post-categories">
+                <i class="iconfont icon-bookmark" title="Categories"></i>
+                
+                <span class="span--category">
+                  <a href="/categories/Leetcode/" title="Leetcode">
+                    <b>#</b> Leetcode
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <p>Problem link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/spiral-matrix/">https://leetcode.com/problems/spiral-matrix/</a></p>
+<p>The following is my solution:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpiralMatrix</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">spiralOrder</span><span class="params">(<span class="keyword">int</span>[][] matrix)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; elements = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> rows = matrix.length;</span><br><span class="line">        <span class="keyword">int</span> columns = matrix[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">int</span> upper = <span class="number">0</span>, lower = rows - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, right = columns - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (upper &lt;= lower &amp;&amp; left &lt;= right) &#123;</span><br><span class="line">            <span class="comment">// there is only one row ?</span></span><br><span class="line">            <span class="keyword">if</span> (upper == lower) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = left; i &lt;= right; i++)</span><br><span class="line">                    elements.add(matrix[upper][i]);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (left == right) &#123;</span><br><span class="line">                <span class="comment">// there is only one column ?</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = upper; i &lt;= lower; i++)</span><br><span class="line">                    elements.add(matrix[i][left]);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// upper row</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = left; i &lt;= right; i++)</span><br><span class="line">                    elements.add(matrix[upper][i]);</span><br><span class="line">                <span class="comment">// right column</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = upper + <span class="number">1</span>; j &lt;= lower; j++)</span><br><span class="line">                    elements.add(matrix[j][right]);</span><br><span class="line">                <span class="comment">// lower row</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> m = right - <span class="number">1</span>; m &gt;= left; m--)</span><br><span class="line">                    elements.add(matrix[lower][m]);</span><br><span class="line">                <span class="comment">// left column</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> n = lower - <span class="number">1</span>; n &gt;= upper + <span class="number">1</span>; n--)</span><br><span class="line">                    elements.add(matrix[n][left]);</span><br><span class="line">            &#125;</span><br><span class="line">            upper++;</span><br><span class="line">            lower--;</span><br><span class="line">            left++;</span><br><span class="line">            right--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> elements;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpiralMatrix spiral = <span class="keyword">new</span> SpiralMatrix();</span><br><span class="line">        <span class="keyword">int</span>[][] matrix1 = &#123;&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;, &#123;<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>&#125;, &#123;<span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>&#125;, &#123;<span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>, <span class="number">16</span>&#125;&#125;;</span><br><span class="line">        <span class="keyword">int</span>[][] matrix2 = &#123;&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;, &#123;<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;, &#123;<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>&#125;, &#123;<span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>&#125;&#125;;</span><br><span class="line">        <span class="keyword">int</span>[][] matrix3 = &#123;&#123;<span class="number">7</span>&#125;, &#123;<span class="number">9</span>&#125;, &#123;<span class="number">6</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line">        List&lt;Integer&gt; result1 = spiral.spiralOrder(matrix1);</span><br><span class="line">        List&lt;Integer&gt; result2 = spiral.spiralOrder(matrix2);</span><br><span class="line">        List&lt;Integer&gt; result3 = spiral.spiralOrder(matrix3);</span><br><span class="line">        System.out.println(result1);</span><br><span class="line">        System.out.println(result2);</span><br><span class="line">        System.out.println(result3);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2021/07/18/The-C-Programming-Language-4-3-External-Variables/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2021-07-22 23:41:41
+            </span>
+            
+                  <span class="post-categories">
+                    <i class="iconfont icon-bookmark" title="Categories"></i>
+                    
+                    <span class="span--category">
+                      <a href="/categories/Leetcode/" title="Leetcode">
+                        <b>#</b> Leetcode
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
+        </div>
+      
     </div>
+    
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+      </div>
+    
   </div>
-  
 
-  
-
-  
-
-  
 
         <div class="footer">
   <div class="social">
