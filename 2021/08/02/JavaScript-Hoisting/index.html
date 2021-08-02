@@ -11,7 +11,7 @@
   
   <title>
     
-      archive_a: 2021 
+      JavaScript - Hoisting 
       
       
       |
@@ -95,131 +95,130 @@
 
 
       <div class="flex-container">
-        <!-- 归档页，展示本站所有文章，按照年份降序归类，url形式：https://yoursite/archives/ -->
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
-<!-- last: 按年份把文章分组，当前遍历到的年份 -->
-<!-- now: 当前遍历到的文章的发布年份 -->
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
 
-<div class="container archives">
-  <div class="post-list">
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2021</span>
-          </h2>
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">JavaScript - Hoisting</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime" title="Update time"></i>
+          2021-08-02 00:34:53
+        </span>
+        
+              <span class="post-categories">
+                <i class="iconfont icon-bookmark" title="Categories"></i>
+                
+                <span class="span--category">
+                  <a href="/categories/JavaScript/" title="JavaScript">
+                    <b>#</b> JavaScript
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <h1 id="Hoisting"><a href="#Hoisting" class="headerlink" title="Hoisting"></a>Hoisting</h1><p>JavaScript <strong>Hoisting</strong> refers to the process whereby the compiler allocates memory for <strong>variable and function declarations</strong> prior to execution of the code. Declarations that are made using <code>var</code> are initialized with a default value of <code>undefined</code>. Declarations made using <code>let</code> and <code>const</code> are not initialized as part of hoisting.  </p>
+<p>In JavaScript, every declaration is <em>hoisted</em> <strong>to the top of its scope</strong>. </p>
+<p>Since functions are hoisted, you can call a function before it is declared. For example: </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">random</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    greet();  <span class="comment">// greet() is called before it is declared. </span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">greet</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;How are you?&quot;</span>); </span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">random();    <span class="comment">// How are you?</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Only-declarations-are-hoisted"><a href="#Only-declarations-are-hoisted" class="headerlink" title="Only declarations are hoisted"></a>Only declarations are hoisted</h2><p>JavaScript only hoists declarations, not initializations.  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(num); <span class="comment">// Returns &#x27;undefined&#x27; from hoisted var declaration (not 6)</span></span><br><span class="line"><span class="keyword">var</span> num; <span class="comment">// Declaration</span></span><br><span class="line">num = <span class="number">6</span>; <span class="comment">// Initialization</span></span><br></pre></td></tr></table></figure>
+<p>The example below only has initialization. No hoisting happens so trying to read the variable results in ReferenceError exception.  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(num); <span class="comment">// Throws ReferenceError exception</span></span><br><span class="line">num = <span class="number">6</span>; <span class="comment">// Initialization</span></span><br></pre></td></tr></table></figure>
+<h2 id="More-Examples"><a href="#More-Examples" class="headerlink" title="More Examples"></a>More Examples</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Example 1</span></span><br><span class="line"><span class="comment">// Only y is hoisted</span></span><br><span class="line"></span><br><span class="line">x = <span class="number">1</span>; <span class="comment">// Initialize x, and if not already declared, declare it - but no hoisting as there is no var in the statement.</span></span><br><span class="line"><span class="built_in">console</span>.log(x + <span class="string">&quot; &quot;</span> + y); <span class="comment">// &#x27;1 undefined&#x27;</span></span><br><span class="line"><span class="comment">// This prints value of y as undefined as JavaScript only hoists declarations</span></span><br><span class="line"><span class="keyword">var</span> y = <span class="number">2</span>; <span class="comment">// Declare and Initialize y</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Example 2</span></span><br><span class="line"><span class="comment">// No hoisting, but since initialization also causes declaration (if not already declared), variables are available.</span></span><br><span class="line"></span><br><span class="line">a = <span class="string">&#x27;Cran&#x27;</span>; <span class="comment">// Initialize a</span></span><br><span class="line">b = <span class="string">&#x27;berry&#x27;</span>; <span class="comment">// Initialize b</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a + <span class="string">&quot;&quot;</span> + b); <span class="comment">// &#x27;Cranberry&#x27;</span></span><br></pre></td></tr></table></figure>
+<h2 id="let-and-const-hoisting"><a href="#let-and-const-hoisting" class="headerlink" title="let and const hoisting"></a><code>let</code> and <code>const</code> hoisting</h2><p><strong>Variables declared with <code>let</code> and <code>const</code> are also hoisted</strong>, but unlike for var the variables are not initialized with a default value of undefined. Until the line in which they are initialized is executed, any code that accesses these variables will throw an exception. </p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2021/07/22/Leetcode-54-Spiral-Matrix/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2021-08-02 00:34:53
+            </span>
+            
+                  <span class="post-categories">
+                    <i class="iconfont icon-bookmark" title="Categories"></i>
+                    
+                    <span class="span--category">
+                      <a href="/categories/JavaScript/" title="JavaScript">
+                        <b>#</b> JavaScript
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
         </div>
       
-      <div class="post-item" title="JavaScript - Hoisting">
-        <div class="time-m-d">08-02</div>
-        <div class="title">
-          <a href="/2021/08/02/JavaScript-Hoisting/">
-            <span>JavaScript - Hoisting</span>
-          </a>
-        </div>
-      </div>
+    </div>
     
-      <div class="post-item" title="Leetcode - 54. Spiral Matrix">
-        <div class="time-m-d">07-22</div>
-        <div class="title">
-          <a href="/2021/07/22/Leetcode-54-Spiral-Matrix/">
-            <span>Leetcode - 54. Spiral Matrix</span>
-          </a>
-        </div>
-      </div>
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Hoisting"><span class="toc-text">Hoisting</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Only-declarations-are-hoisted"><span class="toc-text">Only declarations are hoisted</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#More-Examples"><span class="toc-text">More Examples</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#let-and-const-hoisting"><span class="toc-text">let and const hoisting</span></a></li></ol></li></ol>
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
     
-      <div class="post-item" title="The C Programming Language - 4.3 External Variables">
-        <div class="time-m-d">07-18</div>
-        <div class="title">
-          <a href="/2021/07/18/The-C-Programming-Language-4-3-External-Variables/">
-            <span>The C Programming Language - 4.3 External Variables</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="The C Programming Language - Chapter 1">
-        <div class="time-m-d">07-17</div>
-        <div class="title">
-          <a href="/2021/07/17/The-C-Programming-Language-Chapter-1/">
-            <span>The C Programming Language - Chapter 1</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Leetcode - ZigZag Conversion">
-        <div class="time-m-d">07-11</div>
-        <div class="title">
-          <a href="/2021/07/11/Leetcode-ZigZag-Conversion/">
-            <span>Leetcode - ZigZag Conversion</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Personal Project Ideas">
-        <div class="time-m-d">07-11</div>
-        <div class="title">
-          <a href="/2021/07/11/Personal-Project-Ideas/">
-            <span>Personal Project Ideas</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Algorithms - Sorting Algorithms">
-        <div class="time-m-d">07-11</div>
-        <div class="title">
-          <a href="/2021/07/11/Algorithms-Sorting-Algorithms/">
-            <span>Algorithms - Sorting Algorithms</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Leetcode - 3Sum">
-        <div class="time-m-d">07-10</div>
-        <div class="title">
-          <a href="/2021/07/10/Leetcode-3Sum/">
-            <span>Leetcode - 3Sum</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Dart - Objects, Interfaces, Classes and Mixins">
-        <div class="time-m-d">04-30</div>
-        <div class="title">
-          <a href="/2021/04/30/Objects-Interfaces-Classes-and-Mixins/">
-            <span>Dart - Objects, Interfaces, Classes and Mixins</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Introducing Asynchronous JavaScript">
-        <div class="time-m-d">04-23</div>
-        <div class="title">
-          <a href="/2021/04/23/Introducing-Asynchronous-JavaScript/">
-            <span>Introducing Asynchronous JavaScript</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Object Creation & Prototype">
-        <div class="time-m-d">04-18</div>
-        <div class="title">
-          <a href="/2021/04/18/Object%20Creation%20&%20Prototype/">
-            <span>Object Creation & Prototype</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Hello World">
-        <div class="time-m-d">04-18</div>
-        <div class="title">
-          <a href="/2021/04/18/hello-world/">
-            <span>Hello World</span>
-          </a>
-        </div>
+      <div class="comments-container">
+        
+
+
+
+
+
       </div>
     
   </div>
-</div>
+
 
         <div class="footer">
   <div class="social">
